@@ -1,0 +1,41 @@
+name: Real Skia Canvas regression
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: real-skia-canvas-regression
+  cancel-in-progress: false
+jobs:
+  cpu-regression:
+    if: ${{ github.repository == 'dl991107/skia-canvas-regression-20261031' && github.event_name == 'workflow_dispatch' && github.event.repository.visibility == 'public' && github.event.repository.private == false }}
+    runs-on: macos-26
+    timeout-minutes: 90
+    steps:
+      - name: Read the approved public source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Build fixed CPU Skia and compare baseline with candidate
+        env:
+          EXPECTED_INPUTS_SHA256: cbac047c50aaa395349917417d2e50ae511181d1a0efacfdd982b4e283b652b6
+        run: python3 build-check.py --run
+      - name: Preserve bounded diagnostic in job log and summary
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os, pathlib
+          root = pathlib.Path.cwd() / "evidence"
+          if root.is_symlink():
+              raise SystemExit("diagnostic directory refused")
+          for name, limit in (("report.json", 65536), ("run.log", 8 * 1024 * 1024)):
+              f = root / name
+              if f.is_file() and not f.is_symlink() and f.stat().st_size <= limit:
+                  text = f.read_text(errors="replace")
+                  print(name + "\n" + text)
+                  if name == "report.json":
+                      with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+                          summary.write("Real Skia CPU regression\n\n" + text + "\n")
+          PY

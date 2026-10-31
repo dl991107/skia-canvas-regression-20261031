@@ -1,0 +1,82 @@
+{
+  "upstream": {
+    "chromium_tag": "155.0.8059.39",
+    "fury_reported_commit": "e7dcc1874861258f1639dd301586e60f17bdd28a",
+    "vendor_patch_git_blob": "43300f9f868337799c18395e59ad7b930042ec0f",
+    "upstream_files": [
+      {
+        "path": "third_party/blink/renderer/platform/graphics/image_data_buffer.cc",
+        "upstream_git_blob": "d05ea261a96fcdf74e9600330eb7b4994af41657",
+        "bytes": 6375
+      },
+      {
+        "path": "third_party/blink/renderer/platform/graphics/image_data_buffer.h",
+        "upstream_git_blob": "7788473df7e915a0f5d53b7c134cf1ad8177582e",
+        "bytes": 3206
+      },
+      {
+        "path": "third_party/blink/renderer/core/html/canvas/html_canvas_element.cc",
+        "upstream_git_blob": "4a7dbf745e65e9970af4cbd732d4e6fee4b7460b",
+        "bytes": 83748
+      }
+    ],
+    "upstream_snapshot_commit": "4677e69ea147ee4627dd7e0ee8f9b87a09ab847f",
+    "vendor_baseline_commit": "e7d61266f16c62b8349e633fe524146d51501619",
+    "vendor_patch_exact_base_hash_prefixes_match": true,
+    "local_only_git": true,
+    "full_chromium_checkout": false
+  },
+  "candidate_commit": "7c5869a7982b8768f2a0f5404895789de2df5807",
+  "files": [
+    {
+      "path": "native/baseline-buffer.cc",
+      "bytes": 8557,
+      "sha256": "25df2c1c50a63390c5ff33d98d9baf89635be69292cf8b5f2ec5322a6ac4417c"
+    },
+    {
+      "path": "native/baseline-buffer.h",
+      "bytes": 3561,
+      "sha256": "5c0897ba550e202715fb93f614bf1da95f9b166abef8f74f76aa92fa4b75247f"
+    },
+    {
+      "path": "native/baseline-caller.cc",
+      "bytes": 83884,
+      "sha256": "21dcfe94cf378bed645ad08671dcbd64d045518e8836893d928e4077509c6bf6"
+    },
+    {
+      "path": "native/candidate-buffer.cc",
+      "bytes": 8763,
+      "sha256": "877f1b3973f5852f03ce0d63564aa3d9f7649d675a0292974cdf4863761f89f3"
+    },
+    {
+      "path": "native/candidate-buffer.h",
+      "bytes": 3635,
+      "sha256": "5e9254978ffc9201d31dd624a80a28da83c054e4762f94cce7ce007d52ef4d6b"
+    },
+    {
+      "path": "native/candidate-caller.cc",
+      "bytes": 83912,
+      "sha256": "41c228ce674bf366867fb8ed02a07ef0358c5af8eebdde9b4afb5a90101344ec"
+    },
+    {
+      "path": "native/fury_flat.h",
+      "bytes": 6912,
+      "sha256": "2c6c5ed9800e171b378f174650d5bc18d362709949f9e143a54c0b4790121741"
+    },
+    {
+      "path": "native/LICENSE.chromium",
+      "bytes": 1536,
+      "sha256": "368cca1106be99d39ecd32a38d8305585d802a475effb66380b91ffc9bcf709b"
+    },
+    {
+      "path": "native/LICENSE.fury",
+      "bytes": 2825,
+      "sha256": "08849884b9019b503ab3ab256abd9f390374126ca238337d46ca7fd6a983f0e4"
+    },
+    {
+      "path": "native/base/containers/span.h",
+      "bytes": 65,
+      "sha256": "a9b458bdb2091350437b0fb68bad5fdb8db0bfaf8760d2df35e5999e59118725"
+    }
+  ]
+}

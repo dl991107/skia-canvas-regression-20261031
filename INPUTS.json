@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "repository": "dl991107/skia-canvas-regression-20261031",
+  "skia_revision": "29ed1e87a0a50f3d8347e988842d9d59e7573efa",
+  "gn_revision": "b2afae122eeb6ce09c52d63f67dc53fc517dbdc8",
+  "gn_args": {
+    "target_os": "mac",
+    "target_cpu": "arm64",
+    "is_official_build": true,
+    "is_debug": false,
+    "is_component_build": false,
+    "is_trivial_abi": false,
+    "skia_disable_tracing": true,
+    "skia_enable_tools": false,
+    "skia_enable_ganesh": false,
+    "skia_enable_graphite": false,
+    "skia_enable_precompile": false,
+    "skia_enable_optimize_size": false,
+    "skia_enable_spirv_validation": false,
+    "skia_use_gl": false,
+    "skia_use_metal": false,
+    "skia_use_vulkan": false,
+    "skia_use_dawn": false,
+    "skia_use_angle": false,
+    "skia_use_direct3d": false,
+    "skia_use_egl": false,
+    "skia_use_webgl": false,
+    "skia_use_webgpu": false,
+    "skia_use_partition_alloc": false,
+    "skia_use_perfetto": false,
+    "skia_use_fonthost_mac": false,
+    "skia_use_freetype": false,
+    "skia_use_fontconfig": false,
+    "skia_use_fontations": false,
+    "skia_use_harfbuzz": false,
+    "skia_use_icu": false,
+    "skia_use_icu4x": false,
+    "skia_use_client_icu": false,
+    "skia_use_bidi": false,
+    "skia_use_libgrapheme": false,
+    "skia_enable_skunicode": false,
+    "skia_enable_pdf": false,
+    "skia_enable_svg": false,
+    "skia_enable_skottie": false,
+    "skia_use_xps": false,
+    "skia_use_expat": false,
+    "skia_use_libjpeg_turbo_decode": false,
+    "skia_use_libjpeg_turbo_encode": false,
+    "skia_use_jpeg_gainmaps": false,
+    "skia_use_libpng_decode": false,
+    "skia_use_libpng_encode": false,
+    "skia_use_libwebp_decode": false,
+    "skia_use_libwebp_encode": false,
+    "skia_use_libavif": false,
+    "skia_use_crabbyavif": false,
+    "skia_use_libjxl_decode": false,
+    "skia_use_wuffs": false,
+    "skia_use_piex": false,
+    "skia_use_dng_sdk": false,
+    "skia_use_zlib": false,
+    "skia_use_rust_exif": false,
+    "skia_use_rust_icc": false,
+    "skia_use_rust_png_decode": false,
+    "skia_use_rust_png_for_android": false,
+    "skia_use_rust_png_encode": false,
+    "skia_use_rust_bmp_decode": false,
+    "skia_use_rust_ico_decode": false,
+    "skia_use_rust_jpeg_decode": false,
+    "skia_use_rust_jpeg_encode": false,
+    "skia_build_rust_targets": false,
+    "skia_compile_modules": false,
+    "skia_compile_sksl_tests": false,
+    "skia_lex": false
+  },
+  "files": [
+    {
+      "path": "build-check.py",
+      "bytes": 11636,
+      "sha256": "a00e3b00142f2229255a0c1e3fc3cb9a5cb05b455ab6c939b8c9c283c8036c85"
+    },
+    {
+      "path": "native/LICENSE.chromium",
+      "bytes": 1536,
+      "sha256": "368cca1106be99d39ecd32a38d8305585d802a475effb66380b91ffc9bcf709b"
+    },
+    {
+      "path": "native/LICENSE.fury",
+      "bytes": 2825,
+      "sha256": "08849884b9019b503ab3ab256abd9f390374126ca238337d46ca7fd6a983f0e4"
+    },
+    {
+      "path": "native/base/containers/span.h",
+      "bytes": 65,
+      "sha256": "a9b458bdb2091350437b0fb68bad5fdb8db0bfaf8760d2df35e5999e59118725"
+    },
+    {
+      "path": "native/baseline-buffer.cc",
+      "bytes": 8557,
+      "sha256": "25df2c1c50a63390c5ff33d98d9baf89635be69292cf8b5f2ec5322a6ac4417c"
+    },
+    {
+      "path": "native/baseline-buffer.h",
+      "bytes": 3561,
+      "sha256": "5c0897ba550e202715fb93f614bf1da95f9b166abef8f74f76aa92fa4b75247f"
+    },
+    {
+      "path": "native/baseline-caller.cc",
+      "bytes": 83884,
+      "sha256": "21dcfe94cf378bed645ad08671dcbd64d045518e8836893d928e4077509c6bf6"
+    },
+    {
+      "path": "native/candidate-buffer.cc",
+      "bytes": 8763,
+      "sha256": "877f1b3973f5852f03ce0d63564aa3d9f7649d675a0292974cdf4863761f89f3"
+    },
+    {
+      "path": "native/candidate-buffer.h",
+      "bytes": 3635,
+      "sha256": "5e9254978ffc9201d31dd624a80a28da83c054e4762f94cce7ce007d52ef4d6b"
+    },
+    {
+      "path": "native/candidate-caller.cc",
+      "bytes": 83912,
+      "sha256": "41c228ce674bf366867fb8ed02a07ef0358c5af8eebdde9b4afb5a90101344ec"
+    },
+    {
+      "path": "native/fury_flat.h",
+      "bytes": 6912,
+      "sha256": "2c6c5ed9800e171b378f174650d5bc18d362709949f9e143a54c0b4790121741"
+    },
+    {
+      "path": "real-skia-adapter.h",
+      "bytes": 5607,
+      "sha256": "495bfdf9355605d95d0e503918355b062c804e8f7f15c448160bf5971b90159e"
+    }
+  ]
+}
