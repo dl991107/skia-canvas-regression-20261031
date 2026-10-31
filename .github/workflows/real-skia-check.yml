@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 1
       - name: Build fixed CPU Skia and compare baseline with candidate
         env:
-          EXPECTED_INPUTS_SHA256: cbac047c50aaa395349917417d2e50ae511181d1a0efacfdd982b4e283b652b6
+          EXPECTED_INPUTS_SHA256: fc2dc804c16683f45ddd68b6ea571b3d47d425796dae6a48d72ef74a4a641500
         run: python3 build-check.py --run
       - name: Preserve bounded diagnostic in job log and summary
         if: always()

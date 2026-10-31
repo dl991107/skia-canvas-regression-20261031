@@ -75,8 +75,8 @@
   "files": [
     {
       "path": "build-check.py",
-      "bytes": 11636,
-      "sha256": "a00e3b00142f2229255a0c1e3fc3cb9a5cb05b455ab6c939b8c9c283c8036c85"
+      "bytes": 11745,
+      "sha256": "2acf93924e8e867e3f3bc750a168acf34c52a0595d69ba03eddadc23357f1a9a"
     },
     {
       "path": "native/LICENSE.chromium",

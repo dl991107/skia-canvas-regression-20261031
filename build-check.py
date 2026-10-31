@@ -93,11 +93,11 @@ def execute(b,result):
  cc=b.command('clang-path',['/usr/bin/xcrun','--find','clang']);cxx=b.command('clangxx-path',['/usr/bin/xcrun','--find','clang++']);ar=b.command('ar-path',['/usr/bin/xcrun','--find','ar'])
  sdk=b.command('sdk-path',['/usr/bin/xcrun','--sdk','macosx','--show-sdk-path'])
  for tool in [cc,cxx,ar]:require(Path(tool).is_file() and Path(tool).is_absolute())
- require(Path(sdk).is_dir() and sdk.endswith('.sdk'))
+ require(Path(sdk).is_dir() and sdk.endswith('.sdk') and not any(c.isspace() for c in sdk))
  versions.update(compiler=b.command('compiler-version',[cxx,'--version']),sdk=b.command('sdk-version',['/usr/bin/xcrun','--sdk','macosx','--show-sdk-version']))
  gnroot=b.repo('gn','https://gn.googlesource.com/gn',GN);gnout=gnroot/'out';gnout.mkdir()
  (gnout/'last_commit_position.h').write_text('#define LAST_COMMIT_POSITION_NUM 0\n#define LAST_COMMIT_POSITION "local-source-build '+GN+'"\n')
- b.command('gn-generate',[sys.executable,'build/gen.py','--no-last-commit-position','--allow-warnings'],gnroot,extra={'CXX':shlex.quote(cxx),'AR':shlex.quote(ar)})
+ b.command('gn-generate',[sys.executable,'build/gen.py','--no-last-commit-position','--allow-warnings'],gnroot,extra={'CXX':shlex.quote(cxx),'AR':shlex.quote(ar),'CXXFLAGS':'-isysroot '+sdk,'LDFLAGS':'-isysroot '+sdk})
  b.command('gn-build',[ninja,'-C',str(gnout),'-j1','gn']);gn=gnout/'gn';versions['gn']=b.command('gn-version',[str(gn),'--version'])
  skia=b.repo('skia','https://skia.googlesource.com/skia.git',SKIA);out=skia/'out/cpu';out.mkdir(parents=True)
  args=dict(ARGS,cc=cc,cxx=cxx,xcode_sysroot=sdk)
@@ -109,7 +109,7 @@ def execute(b,result):
  result.update(versions=versions,gn_sha256=hashlib.sha256(gn.read_bytes()).hexdigest(),ninja_sha256=hashlib.sha256(Path(ninja).read_bytes()).hexdigest(),library_sha256=hashlib.sha256(library.read_bytes()).hexdigest(),skia_revision=SKIA,gn_revision=GN,args=args,defines=defines,dependency_targets=deps,cpu_only=True,full_chromium=False,runs={})
  for label in ['baseline','candidate']:
   unit,meta=generate(label,b.work/label);binary=unit.parent/'test'
-  command=[cxx,'-std=c++20','-O1','-g','-Wall','-Wextra','-Werror','-fsanitize=address,undefined','-fno-omit-frame-pointer','-I'+str(ROOT),'-I'+str(ROOT/'native'),'-I'+str(skia),'-I'+str(unit.parent)]+['-D'+x for x in defines]+[str(unit),str(library),'-framework','ApplicationServices','-framework','OpenGL','-o',str(binary)]
+  command=[cxx,'-isysroot',sdk,'-std=c++20','-O1','-g','-Wall','-Wextra','-Werror','-fsanitize=address,undefined','-fno-omit-frame-pointer','-I'+str(ROOT),'-I'+str(ROOT/'native'),'-I'+str(skia),'-I'+str(unit.parent)]+['-D'+x for x in defines]+[str(unit),str(library),'-framework','ApplicationServices','-framework','OpenGL','-o',str(binary)]
   b.command(label+'-compile',command);text=b.command(label+'-run',[str(binary)],allowed=(1,) if label=='baseline' else (0,))
   result['runs'][label]=dict(meta,output=text);result['real_skia_ran']=True
   expected='literal_pixel 1,1,1,1' if label=='baseline' else 'literal_pixel 255,255,255,1'
